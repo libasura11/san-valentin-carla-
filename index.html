@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 30px;
+            color: #d63384;
+        }
+        #message {
+            font-size: 20px;
+            color: #333;
+            margin-top: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+        .no {
+            background-color: #ff1744;
+            color: white;
+            position: absolute;
+        }
+        .hidden {
+            display: none;
+        }
+        .love-message {
+            font-size: 24px;
+            color: #ff4081;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        img {
+            width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres ser mi San Valentín? 💖</h1>
+        <p id="message">Presiona "Sí" para continuar...</p>
+        <div class="buttons">
+            <button class="btn yes" onclick="nextMessage()">Sí 😍</button>
+            <button class="btn no" onmouseover="moverBoton()">No 🙈</button>
+        </div>
+        <p class="love-message hidden" id="love-message">💌</p>
+        <img id="love-image" class="hidden" src="https://mir-s3-cdn-cf.behance.net/projects/404/f1273f127788361.6149498c56b57.png" alt="Gatitos abrazados">
+    </div>
+
+    <script>
+        let count = 0;
+        const messages = [
+            "¿Me amas? 💕",
+            "¿Sabes que eres la chica más hermosa del mundo? 😍",
+            "¿Prometes estar conmigo siempre? 💞",
+            "¿Me extrañarás cuando no esté cerca? 🥺",
+            "¿Sabías que cada día te amo más? ❤️"
+        ];
+
+        function nextMessage() {
+            if (count < messages.length) {
+                document.getElementById("message").innerText = messages[count];
+                count++;
+            } else {
+                document.getElementById("message").classList.add("hidden");
+                document.querySelector(".buttons").classList.add("hidden");
+                document.getElementById("love-message").classList.remove("hidden");
+                document.getElementById("love-message").innerText = "Te amo con todo mi corazón, Carla. Eres lo mejor que me ha pasado en la vida. 💖";
+                document.getElementById("love-image").classList.remove("hidden");
+            }
+        }
+
+        function moverBoton() {
+            const botonNo = document.querySelector('.no');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            botonNo.style.left = x + "px";
+            botonNo.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
